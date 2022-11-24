@@ -1,5 +1,9 @@
 export default function Footer() {
   return (
-    <footer>Copyright © 2022 OsiFood. Powered by Haravan</footer>
+    <footer>
+      <div className="copy-right">
+        Copyright © 2022 OsiFood. Powered by Haravan
+      </div>
+    </footer>
   )
 }
