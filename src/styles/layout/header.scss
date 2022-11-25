@@ -11,6 +11,9 @@
   }
   &__iconav {
     color: #fff;
+    cursor: pointer;
+    border: none;
+    background: transparent;
     i {
       font-size: 24px;
     }
@@ -59,6 +62,7 @@
         right: 0;
         top: 50%;
         transform: translateY(-50%);
+        padding-right: 10px;
       }
     }
   }
@@ -148,6 +152,12 @@
           border: 1px solid #057541;
         }
       }
+    }
+  }
+  .navbar {
+    display: none;
+    &.show {
+      display: block;
     }
   }
 }
