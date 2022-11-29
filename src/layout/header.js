@@ -1,11 +1,19 @@
+import React, { useState } from "react";
+import Nav from "./nav";
+
 function Header() {
+  const [openMenu, setOpenMenu] = useState(false);
+  const toggleMenu = () => {
+    setOpenMenu(!openMenu);
+  };
+  
   return (
     <header className="mainHeader">
       <div className="mainHeader__inner">
         <div className="container mainHeader__container">
           <div className="mainHeader__left">
-            <button className="mainHeader__iconav">
-              <i className="fal fa-bars"></i><span>menu</span>
+            <button className="mainHeader__iconav" onClick={toggleMenu}>
+              { !openMenu ? <i className="fal fa-bars"></i> : <i className="fal fa-times"></i> }<span>menu</span>
             </button>
             <div className="mainHeader__logo">
               <a href="https://osifood.vn">
@@ -15,7 +23,7 @@ function Header() {
                 />
               </a>
             </div>
-            
+            <Nav isOpen={openMenu}/>
           </div>
           <div className="mainHeader__middle">
             <div className="mainHeader__search">
@@ -27,7 +35,10 @@ function Header() {
           </div>
           <div className="mainHeader__right">
             <div className="mainHeader__action">
-              <div className="mainHeader__action__address">288 Phan Văn Trị, Phường 11, Quận Bình Thạnh</div>
+              <div href="/" className="mainHeader__action__link">
+                <span className="txtnw">Giao hoặc đến lấy tại <i className="fal fa-angle-down"></i></span>
+                <div className="mainHeader__action__address">288 Phan Văn Trị, Phường 11, Quận Bình Thạnh</div>
+              </div>
               <div className="mainHeader__action__user">
                 <a href="/"><i className="fal fa-user"></i><span>Tài khoản</span></a>  
               </div>

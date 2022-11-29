@@ -8,6 +8,7 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
+    position: relative;
   }
   &__iconav {
     color: #fff;
@@ -74,6 +75,18 @@
     a {
       color: #fff;
     }
+    &__link {
+      margin: 0 25px;
+      cursor: pointer;
+      .txtnw {
+        display: block;
+        font-size: 12px;
+        i {
+          vertical-align: middle;
+          margin-left: 3px;
+        }
+      }
+    }
     &__address {
       max-width: 150px;
       width: 100%;
@@ -82,7 +95,6 @@
       display: inline-block;
       vertical-align: middle;
       overflow: hidden;
-      margin: 0 25px;
     }
     &__user, &__cart {
       i {
@@ -152,12 +164,6 @@
           border: 1px solid #057541;
         }
       }
-    }
-  }
-  .navbar {
-    display: none;
-    &.show {
-      display: block;
     }
   }
 }
