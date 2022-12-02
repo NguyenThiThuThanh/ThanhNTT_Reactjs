@@ -30,11 +30,20 @@
           }
         }
         &__img {
+          position: relative;
           &__inner {
             background-repeat: no-repeat;
             background-size: contain;
             padding-top: 100%;
             background-position: center;
+          }
+          .pro-soldout {
+            position: absolute;
+            top: 3px;
+            background: #565656;
+            color: #fff;
+            font-size: 11px;
+            padding: 2px 5px;
           }
         }
         &__detail {
@@ -81,6 +90,7 @@
             background: linear-gradient(to left, #fff 50%, #057541 50%) right;
             background-size: 200%;
             transition: .4s ease-out;
+            cursor: pointer;
             i {
               margin-right: 5px;
             }
@@ -88,8 +98,68 @@
               color: #fff;
               background-position: left;
             }
+            &.soldout {
+              border-color: #c9c3c3;
+              color: #c9c3c3;
+              pointer-events: none;
+              text-transform: uppercase;
+            }
+          }
+          &__action {
+            position: relative;
+          }
+          &__quantity {
+            position: absolute;
+            top: 0;
+            .boxqty {
+              display: flex;
+              border: 1px solid #008848;
+              align-items: center;
+              border-radius: 5px;
+              background: #fff;
+              input {
+                width: 100%;
+                border: none;
+                color: #008848;
+                text-align: center;
+                font-size: 14px;
+                line-height: 2;font-size: 14px;
+                line-height: 2;
+                outline: 0;
+              }
+              i {
+                color: #008848;
+                padding: 0 10px;
+              }
+              button {
+                border: none;
+                background: transparent;
+                cursor: pointer;
+                font-size: 14px;
+                line-height: 2;
+                &.disable {
+                  pointer-events: none;
+                  i {
+                    color: #c9c3c3;
+                  }
+                }
+              }
+            }
           }
         }
+      }
+    }
+    &__btnMore {
+      display: flex;
+      justify-content: center;
+      margin-top: 10px;
+      a {
+        padding: 10px 30px;
+        border-radius: 4px;
+        background: #ffffff;
+        color: #008848;
+        border: 1px solid #008848;
+        font-size: 13px;
       }
     }
   }
