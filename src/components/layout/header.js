@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import Nav from "./nav";
+import { Link } from 'react-router-dom';
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
@@ -54,12 +55,18 @@ function Header() {
           <div className="mainHeader__categories">
             <a href="https://osifood.vn"><i className="fal fa-home-alt"></i></a>
             <ul className="mainHeader__menulist">
-              <li className="active"><a href="/" title="Trang chủ">Trang chủ</a></li>
-              <li><a href="/" title="Trang chủ">Giới thiệu</a></li>
-              <li><a href="/" title="Trang chủ">Sản phẩm</a></li>
-              <li><a href="/" title="Trang chủ">Bài viết</a></li>
-              <li><a href="/" title="Trang chủ">Liên hệ</a></li>
-              <li><a href="/" title="Trang chủ">Tuyển dụng</a></li>
+              {
+                [
+                  { name: 'Trang chủ', route: '/trang-chu'},
+                  { name: 'Giới thiệu', route: '/gioi-thieu'},
+                  { name: 'Sản phẩm', route: '/san-pham'},
+                  { name: 'Bài viết', route: '/bai-viet'},
+                  { name: 'Liên hệ', route: '/lien-he'},
+                  { name: 'Tuyển dụng', route: '/tuyen-dung'},
+                ].map((el, index) =>
+                  <li key={index}><Link to={el.route}>{el.name}</Link></li>
+                )
+              }
             </ul>
           </div>
         </div>
