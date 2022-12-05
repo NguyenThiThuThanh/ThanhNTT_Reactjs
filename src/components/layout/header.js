@@ -41,7 +41,8 @@ function Header() {
                 <div className="mainHeader__action__address">288 Phan Văn Trị, Phường 11, Quận Bình Thạnh</div>
               </div>
               <div className="mainHeader__action__user">
-                <a href="/"><i className="fal fa-user"></i><span>Tài khoản</span></a>  
+                <Link to="/dang-nhap"><i className="fal fa-user"></i><span>Tài khoản</span></Link>
+                {/* <a href="/"><i className="fal fa-user"></i><span>Tài khoản</span></a>   */}
               </div>
               <div className="mainHeader__action__cart">
                 <a href="/"><i className="fal fa-shopping-cart"></i><span>Giỏ hàng</span><span className="count">0</span></a>  
