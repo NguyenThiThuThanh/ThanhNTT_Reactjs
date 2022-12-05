@@ -42,7 +42,6 @@ function Header() {
               </div>
               <div className="mainHeader__action__user">
                 <Link to="/dang-nhap"><i className="fal fa-user"></i><span>Tài khoản</span></Link>
-                {/* <a href="/"><i className="fal fa-user"></i><span>Tài khoản</span></a>   */}
               </div>
               <div className="mainHeader__action__cart">
                 <a href="/"><i className="fal fa-shopping-cart"></i><span>Giỏ hàng</span><span className="count">0</span></a>  
