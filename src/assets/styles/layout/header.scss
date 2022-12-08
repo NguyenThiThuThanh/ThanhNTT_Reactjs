@@ -1,5 +1,6 @@
 .mainHeader {
   width: 100%;
+  position: relative;
   &__inner {
     background-image: linear-gradient(to right, #0089CF, #009247);
     text-align: center;
@@ -106,8 +107,9 @@
     }
     &__cart {
       margin: 0 0 0 25px;
-      a {
+      .cart-link {
         position: relative;
+        cursor: pointer;
       }
       .count {
         position: absolute;
@@ -120,8 +122,8 @@
         height: 16px;
         border-radius: 50%;
         text-align: center;
-        top: -14px;
-        left: 16px;
+        top: -9px;
+        right: 9px;
       }
     }
     &__user {

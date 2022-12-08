@@ -28,6 +28,7 @@ function ProductItem(props) {
       setShow(false);
     }
   }
+  
 
   return (
     <div className='productItem'>
@@ -49,7 +50,7 @@ function ProductItem(props) {
               <div className="productItem__detail__quantity">
                 <div className="boxqty">
                   <button onClick={minusValue}><i className="fal fa-minus"></i></button>
-                  <input type="text" value={value} onChange={e => setValue(e.target.value)} className="proloop-qtyvalue" />
+                  <input type="text" value={value} onChange={e => setValue(e.target.value)} min={0} max={value} readOnly className="proloop-qtyvalue" />
                   <button onClick={plusValue} className={`${value < data.quantity ? '' : 'disable'}`}><i className="fal fa-plus"></i></button>
                 </div>
               </div>

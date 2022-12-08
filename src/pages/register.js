@@ -1,16 +1,29 @@
 import { Link } from 'react-router-dom';
 
-function Login() {
+function Register() {
   return (
     <div className="p-login container">
       <div className="c-account">
         <div className="c-account__header">
-          <h1 className="txt-title">Đăng nhập tài khoản</h1>
-          <p className="txt-small">Nhập email và mật khẩu của bạn</p>
+          <h1 className="txt-title">Tạo tài khoản</h1>
         </div>
         <div className="c-account__inner">
           <div className="c-account__form">
             <form>
+              <div className="c-account__form__input">
+                <input type="text" name="customer[surname]" placeholder="Họ" required />
+              </div>
+              <div className="c-account__form__input">
+                <input type="text" name="customer[name]" placeholder="Name" required />
+              </div>
+              <div className='c-account__form__sex'>
+                <input type="radio" value="female" name="gender"/> Nữ
+                <span>&ensp;</span>
+                <input type="radio" value="male" name="gender"/> Nam
+              </div>
+              <div className="c-account__form__input">
+                <input type="date" name="customer[birthday]" placeholder="mm/dd/yyyy" required />
+              </div>
               <div className="c-account__form__input">
                 <input type="email" name="customer[email]" placeholder="Email" required />
               </div>
@@ -23,16 +36,16 @@ function Login() {
                 </div>
               </div>
               <div className="c-account__form__submit">
-                <button type="submit" className="c-account__form__btn">Đăng nhập</button>
+                <button type="submit" className="c-account__form__btn">Đăng ký</button>
               </div>
             </form>
           </div>
           <div className="c-account__action">
-            <p>Khách hàng mới? 
-              <Link to="/dang-ky" className='link'>Tạo tài khoản</Link>
+            <p>Đã có tài khoản? 
+              <Link to="/dang-nhap" className='link'>Đăng nhập</Link>
             </p>
-            <p>Quên mật khẩu? 
-              <a href="/" className="link">Khôi phục mật khẩu</a>
+            <p> 
+              <Link to="/trang-chu" className="link">Quay lại trang chủ</Link>
             </p>
           </div>
         </div>
@@ -41,4 +54,4 @@ function Login() {
   )
 }
 
-export default Login;
+export default Register;

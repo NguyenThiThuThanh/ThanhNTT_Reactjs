@@ -1,12 +1,23 @@
 import React, { useState } from "react";
 import Nav from "./nav";
 import { Link } from 'react-router-dom';
+import DropdownAdress from "../dropdownAdress";
+import DropdownCart from "../dropdownCart";
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
+  const [openAdress, setOpenAdress] = useState(false);
+  const [openCart, setOpenCart] = useState(false);
+  
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
   };
+  const toggleAdress = () => {
+    setOpenAdress(!openAdress)
+  }
+  const toggleCart = () => {
+    setOpenCart(!openCart)
+  }
   
   return (
     <header className="mainHeader">
@@ -36,15 +47,17 @@ function Header() {
           </div>
           <div className="mainHeader__right">
             <div className="mainHeader__action">
-              <div href="/" className="mainHeader__action__link">
+              <div className="mainHeader__action__link" onClick={toggleAdress}>
                 <span className="txtnw">Giao hoặc đến lấy tại <i className="fal fa-angle-down"></i></span>
                 <div className="mainHeader__action__address">288 Phan Văn Trị, Phường 11, Quận Bình Thạnh</div>
+                <DropdownAdress isOpen={openAdress} />
               </div>
               <div className="mainHeader__action__user">
                 <Link to="/dang-nhap"><i className="fal fa-user"></i><span>Tài khoản</span></Link>
               </div>
               <div className="mainHeader__action__cart">
-                <a href="/"><i className="fal fa-shopping-cart"></i><span>Giỏ hàng</span><span className="count">0</span></a>  
+                <div className="cart-link" onClick={toggleCart}><i className="fal fa-shopping-cart"></i><span>Giỏ hàng</span><span className="count">0</span></div>
+                <DropdownCart isOpen={openCart} />
               </div>
             </div>
           </div>
@@ -53,7 +66,7 @@ function Header() {
       <div className="mainHeader__groupmenu">
         <div className="container">
           <div className="mainHeader__categories">
-            <a href="https://osifood.vn"><i className="fal fa-home-alt"></i></a>
+            <Link to="/trang-chu"><i className="fal fa-home-alt"></i></Link>
             <ul className="mainHeader__menulist">
               {
                 [

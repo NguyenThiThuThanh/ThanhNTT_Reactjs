@@ -8,6 +8,9 @@ import Introduce from "../../pages/introduce";
 import Posts from "../../pages/posts";
 import Contact from "../../pages/contact";
 import Recruit from "../../pages/recruit";
+import Login from "../../pages/login";
+import Register from "../../pages/register";
+import Cart from "../../pages/cart";
 
 function App() {
   return (
@@ -21,6 +24,9 @@ function App() {
           <Route path="/bai-viet" element={<Posts />}/>
           <Route path="/lien-he" element={<Contact />}/>
           <Route path="/tuyen-dung" element={<Recruit />}/>
+          <Route path="/dang-nhap" element={<Login />} />
+          <Route path="/dang-ky" element={<Register />} />
+          <Route path="/gio-hang" element={<Cart />} />
         </Routes>
       </main>
       <Footer />

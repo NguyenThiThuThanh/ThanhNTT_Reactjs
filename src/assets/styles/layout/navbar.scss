@@ -8,6 +8,7 @@
   left: -8px;
   box-shadow: 0 1px 5px 2px rgb(0 0 0 / 10%);
   border-radius: 3px;
+  z-index: 1;
   &.show {
     display: block;
     animation: fadeIn 0.2s linear;
@@ -21,18 +22,107 @@
     left: 30px;
     top: -8px;
   }
-}
-
-@keyframes fadeIn {
-  0% {
-      display: none;
-      opacity: 0;
+  &__content {
+    &__ttl {
+      padding: 15px 12px 5px;
+      text-align: left;
+      border-bottom: 1px solid #e7e7e7;
+      i {
+        font-size: 24px;
+        color: #000;
+      }
+    }
+    &__block {
+      max-height: calc(100vh - 200px);
+      overflow-y: auto;
+      text-align: left;
+      &::-webkit-scrollbar {
+        width: 2px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background: #c9c3c3;
+        border-radius: 10px;
+      }
+      ul {
+        li {
+          a {
+            padding-right: 32px;
+            padding-left: 15px;
+            position: relative;
+            font-weight: 400;
+            cursor: pointer;
+            display: inline-block;
+            outline: none;
+            font-size: 14px;
+          }
+        }
+      }
+      .list-parents {
+        .list-item {
+          .txt-box {
+            position: relative;
+            i {
+              font-size: 10px;
+              padding: 5px;
+              color: #979797;
+              position: absolute;
+              right: 15px;
+              top: calc(50% - 10px);
+              cursor: pointer;
+            }
+          }
+          .link-parent {
+            font-size: 13px;
+            padding-top: 10px;
+            padding-bottom: 10px;
+            font-weight: 700;
+            text-transform: uppercase;
+            position: relative;
+            color: #000;
+          }
+        }
+      }
+      .list-child {
+        padding-left: 10px;
+        margin-bottom: 10px;
+        li {
+          a {
+            color: #252a2b;
+            padding-top: 5px;
+            padding-bottom: 5px;
+          }
+        }
+      }
+      .list-supchild {
+        padding-left: 10px;
+        margin-bottom: 10px;
+      }
+    }
   }
-  1% {
-      display: block;
-  }
-  100% {
-      display: block;
-      opacity: 1;
+  &__help {
+    padding: 20px 10px 30px;
+    .help-title {
+      font-size: 13px;
+      color: #252a2b;
+      line-height: 1.5;
+      text-transform: uppercase;
+      font-weight: 500;
+      font-style: normal;
+      margin-bottom: 10px;
+    }
+    .help-item--link {
+      font-size: 14px;
+      color: #252a2b;
+      display: flex;
+      align-items: center;
+      margin: 0;
+      border: 0;
+      padding: 7px 0;
+      i {
+        font-size: 14px;
+        margin-right: 14px;
+        z-index: 2;
+      }
+    }
   }
 }

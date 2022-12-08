@@ -1,0 +1,95 @@
+.c-account {
+  margin: 60px auto 0;
+  max-width: 600px;
+  width: 100%;
+  &__header {
+    text-align: center;
+    .txt-title {
+      font-size: 25px;
+      font-weight: 700;
+      margin: 0px 0;
+    }
+    .txt-small {
+      font-size: 14px;
+      color: #677279;
+    }
+  }
+  &__inner {
+    margin-top: 30px;
+    .txt-recaptcha {
+      padding: 15px 0 0;
+      color: #9e9e9e;
+      font-size: 13px;
+      a {
+        color: #2962ff;
+      }
+    }
+  }
+  &__form {
+    &__input {
+      input {
+        width: 100%;
+        height: 55px;
+        padding: 5px 20px;
+        color: #5c5c5c;
+        font-weight: 500;
+        border: 1px solid transparent;
+        background: #ededed;
+        outline: 0;
+        font-size: 14px;
+        box-sizing: border-box;
+        &:focus {
+          background: #fff;
+          border-color: #ededed;
+        }
+      }
+      &:not(:last-child) {
+        margin-bottom: 20px;
+      }
+      
+    }
+    &__submit {
+      text-align: center;
+    }
+    &__btn {
+      display: inline-block;
+      border-radius: 0;
+      padding: 0 30px;
+      height: 45px;
+      line-height: 45px;
+      text-transform: uppercase;
+      font-weight: 500;
+      cursor: pointer;
+      border: 1px solid #008848;
+      color: #fff;
+      font-size: 14px;
+      outline: 0;
+      appearance: none;
+      background: linear-gradient(to left, #008848 50%, #fff 50%) right;
+      background-size: 200%;
+      transition: .4s ease-out;
+      &:hover {
+        color: #323232;
+        background-position: left;
+      }
+    }
+    &__sex {
+      margin-bottom: 20px;
+    }
+  }
+  &__action {
+    margin-top: 20px;
+    p {
+      font-size: 12px;
+      color: #677279;
+      .link {
+        margin-left: 5px;
+        color: #008848;
+        font-weight: 500;
+        &:hover {
+          text-decoration: underline;
+        }
+      }
+    }
+  }
+}
