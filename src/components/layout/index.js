@@ -18,6 +18,7 @@ function App() {
       <Header />
       <main className='wrapperMain'>
         <Routes>
+          <Route index path="/" element={<Home/>}/>
           <Route path="/trang-chu" element={<Home/>}/>
           <Route path="/gioi-thieu" element={<Introduce />}/>
           <Route path="/san-pham" element={<Product />}/>

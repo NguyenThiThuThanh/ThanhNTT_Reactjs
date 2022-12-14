@@ -167,6 +167,12 @@
             justify-content: center;
             align-items: center;
           }
+          &.mnc-plus.disable {
+            pointer-events: none;
+            i {
+              color: #c9c3c3;
+            }
+          }
         }
         .qty-value {
           display: inline-block;

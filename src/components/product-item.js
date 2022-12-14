@@ -1,4 +1,6 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
+import { useDispatch, useSelector } from 'react-redux';
+import { AddCart, IncreaseQuantity, DecreaseQuantity } from '../redux/cart/actions';
 
 function ProductItem(props) {
   const {data= {
@@ -10,17 +12,27 @@ function ProductItem(props) {
 
   const [show, setShow] = useState(false);
   const [value, setValue] = useState(0);
+  const dispatch = useDispatch();
+  const redux = useSelector((state) => state);
 
-  const addCartClick = () => {
-    setShow(true);
+  
+
+  const addCartClick = product => {
+    dispatch(AddCart(product));
     setValue(value + 1);
+    if(value >= 0) {
+      setShow(true);
+    }
   }
-  const plusValue = () => {
+  const plusValue = product => {
     if(value < data.quantity) {
+      dispatch(AddCart(product));
       setValue(value + 1);
     }
   }
-  const minusValue = () => {
+  const minusValue = product => {
+    dispatch(DecreaseQuantity(0));
+    // console.log(product);
     if (value >= 1) {
       setValue(value - 1);
     } 
@@ -28,6 +40,12 @@ function ProductItem(props) {
       setShow(false);
     }
   }
+  useEffect(() => {
+    if(redux.CartRemove === data.id) {
+      setValue(0);
+      setShow(false);
+    }
+  },[redux.Carts])
   
 
   return (
@@ -42,16 +60,16 @@ function ProductItem(props) {
         <div className='productItem__detail'>
           <p className='productItem__detail__vendor'><a href='/colections/osifood'>{data.vendors}</a></p>
           <h3 className='productItem__detail__name'><a href='/products/cahu'>{data.name}</a></h3>
-          <p className='productItem__detail__price'>{data.price}₫</p>
+          <p className='productItem__detail__price'>{Number(data.price).toLocaleString('en-US')}₫</p>
           <div className="productItem__detail__action">
-            {data.quantity > 0 && <div className='productItem__detail__addcart' onClick={addCartClick}><i className="fal fa-shopping-bag"></i><span>Chọn mua</span></div>}
+            {data.quantity > 0 && <div className='productItem__detail__addcart' onClick={() => addCartClick(data)}><i className="fal fa-shopping-bag"></i><span>Chọn mua</span></div>}
             {data.quantity <= 0 && <div className='productItem__detail__addcart soldout'><span>Tạm hết hàng</span></div> }
             { show && 
               <div className="productItem__detail__quantity">
                 <div className="boxqty">
-                  <button onClick={minusValue}><i className="fal fa-minus"></i></button>
-                  <input type="text" value={value} onChange={e => setValue(e.target.value)} min={0} max={value} readOnly className="proloop-qtyvalue" />
-                  <button onClick={plusValue} className={`${value < data.quantity ? '' : 'disable'}`}><i className="fal fa-plus"></i></button>
+                  <button onClick={() => minusValue(data)}><i className="fal fa-minus"></i></button>
+                  <input type="text" value={value} min={0} max={value} readOnly className="proloop-qtyvalue" />
+                  <button onClick={() => plusValue(data)} className={`${value < data.quantity ? '' : 'disable'}`}><i className="fal fa-plus"></i></button>
                 </div>
               </div>
             }

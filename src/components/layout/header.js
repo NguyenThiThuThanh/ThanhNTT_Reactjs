@@ -3,11 +3,14 @@ import Nav from "./nav";
 import { Link } from 'react-router-dom';
 import DropdownAdress from "../dropdownAdress";
 import DropdownCart from "../dropdownCart";
+import { useSelector } from 'react-redux';
 
 function Header() {
   const [openMenu, setOpenMenu] = useState(false);
   const [openAdress, setOpenAdress] = useState(false);
   const [openCart, setOpenCart] = useState(false);
+  const redux = useSelector((state) => state);
+  // console.log(redux);
   
   const toggleMenu = () => {
     setOpenMenu(!openMenu);
@@ -56,7 +59,7 @@ function Header() {
                 <Link to="/dang-nhap"><i className="fal fa-user"></i><span>Tài khoản</span></Link>
               </div>
               <div className="mainHeader__action__cart">
-                <div className="cart-link" onClick={toggleCart}><i className="fal fa-shopping-cart"></i><span>Giỏ hàng</span><span className="count">0</span></div>
+                <div className="cart-link" onClick={toggleCart}><i className="fal fa-shopping-cart"></i><span>Giỏ hàng</span><span className="count">{redux.numberCart}</span></div>
                 <DropdownCart isOpen={openCart} />
               </div>
             </div>

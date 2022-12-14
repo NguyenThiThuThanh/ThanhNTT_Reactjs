@@ -2,6 +2,63 @@ import React from "react";
 import { Link } from 'react-router-dom';
 
 function Nav({ isOpen }) {
+  const menuItems = [
+    {
+      title: 'Đang khuyến mãi',
+      url: '/khuyen-mai'
+    },
+    {
+      title: 'Thực phẩm tươi sống',
+      url: '/thuc-pham-tuoi-song',
+      submenu: [
+        {
+          title: 'Thịt - trứng - hải sản',
+          url: 'thit-trung-haisan',
+          submenu: [
+            {
+              title: 'Thịt',
+              url: 'thit'
+            },
+            {
+              title: 'Trứng',
+              url: 'trung'
+            }
+          ]
+        },
+        {
+          title: 'Rau - củ - quả',
+          url: 'rau-cu-qua',
+          submenu: [
+            {
+              title: 'Rau',
+              url: '/rau'
+            },
+            {
+              title: 'Củ',
+              url: '/cu'
+            },
+            {
+              title: 'Quả',
+              url: '/qua'
+            }
+          ]
+        },
+        {
+          title: 'Trái cây',
+          url: '/trai-cay'
+        },
+        {
+          title: 'Thực phẩm chế biến',
+          url: 'thuc-pham-che-bien'
+        }
+      ]
+    },
+    {
+      title: 'Thực phẩm công nghệ',
+      url: '/thuc-pham-cong-nghe'
+    }
+  ]
+
   return (
     <div className={`navbar ${isOpen ? 'show' : ''}`}>
       <div className="navbar__inner">
@@ -11,44 +68,43 @@ function Nav({ isOpen }) {
           </div>
           <div className="navbar__content__block">
             <ul className="list-parents">
-              <li className="list-item">
-                <div className="txt-box">
-                  <a href="/" className="link-parent">Đang khuyến mãi</a>
-                </div>
-              </li>
-              <li className="list-item">
-                <div className="txt-box">
-                  <a href="/" className="link-parent">Thực phẩm tươi sống</a>
-                  <i className="fas fa-chevron-down"></i>
-                </div>
-                <ul className="list-child">
-                  <li>
-                    <div className="txt-box">
-                      <a href="/">Thịt - trứng - hải sản</a>
-                      <i className="fas fa-chevron-down"></i>
-                    </div>
-                    <ul className="list-supchild">
-                      <li><a href="/">Thịt</a></li>
-                      <li><a href="/">Trứng</a></li>
-                      <li><a href="/">Hải sản</a></li>
-                    </ul>
-                  </li>
-                  <li>
-                    <div className="txt-box">
-                      <a href="/">Rau - củ - quả</a>
-                      <i className="fas fa-chevron-down"></i>
-                    </div>
-                    <ul className="list-supchild">
-                      <li><a href="/">Rau</a></li>
-                      <li><a href="/">Củ</a></li>
-                      <li><a href="/">Quả</a></li>
-                    </ul>
-                  </li>
-                  <li><a href="/">Trái cây</a></li>
-                  <li><a href="/">Thực phẩm chế biến</a></li>
-                </ul>
-              </li>
-              <li className="list-item"><a href="/" className="link-parent">Thực phẩm công nghệ</a></li>
+              {
+                menuItems.map((el, index) =>
+                <li className="list-item" key={index}>
+                  <div className="txt-box">
+                    <Link to={el.url} className="link-parent">{el.title}</Link>
+                    { el.submenu && <i className="fas fa-chevron-up"></i> }
+                  </div>
+                  {
+                    el.submenu && (
+                      <ul className="list-child">
+                        {
+                          el.submenu.map((sub, index) =>
+                            <li key={index}>
+                              <div className="txt-box">
+                                <Link to={sub.url}>{sub.title}</Link>
+                                { sub.submenu && <i className="fas fa-chevron-up"></i> }
+                              </div>
+                              {
+                                sub.submenu && (
+                                  <ul className="list-supchild">
+                                    {
+                                      sub.submenu.map((supcd, index) =>
+                                        <li key={index}><Link to={supcd.url}>{supcd.title}</Link></li>
+                                      )
+                                    }
+                                  </ul>
+                                )
+                              }
+                            </li>
+                          )
+                        }
+                      </ul>
+                    )
+                  }
+                </li>
+                )
+              }
             </ul>
             <div className="navbar__help">
               <p className="help-title">Bạn cần hỗ trợ</p>
